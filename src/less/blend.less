@@ -65,21 +65,80 @@
 // }
 
 // arguments变量：代表所有的参数（不在乎参数顺序的时候可以使用）
-.border(@width:1px,@style:solid,@color:#b7b7b7) {
-    border: @arguments;
+// .border(@width:1px,@style:solid,@color:#b7b7b7) {
+//     border: @arguments;
+// }
+// .box1 {
+//     .border()
+// }
+// .box2 {
+//     .border(1px,solid,#ff0000)
+// }
+// .box3 {
+//     .border(2px,solid,#ff0000)
+// }
+// .box4 {
+//     .border(1px,dotted,#ff0000)
+// }
+// .box5 {
+//     .border()
+// }
+
+// 模式匹配
+// 首参，有条件匹配
+.border(top,@width:1px){
+    border-top: @width solid #b7b7b7;
+}
+.border(right,@width:1px){
+    border-right: @width solid #b7b7b7;
+}
+.border(bottom,@width:1px){
+    border-bottom: @width solid #b7b7b7;
+}
+.border(left,@width:1px){
+    border-left: @width solid #b7b7b7;
+}
+// 首参，默认匹配值，公共的值
+.border(@_,@width:1px){
+    // width: 100px;
+    width: round(1.67)*1px;
 }
 .box1 {
-    .border()
+    .border(top)
 }
 .box2 {
-    .border(1px,solid,#ff0000)
+    .border(right)
 }
 .box3 {
-    .border(2px,solid,#ff0000)
+    .border(bottom)
 }
 .box4 {
-    .border(1px,dotted,#ff0000)
+    .border(left)
 }
-.box5 {
-    .border()
+
+
+// 其它：
+// Math函数：
+// round(1.67)  //2 四舍五入
+// cell(2.4)   //3 向上取整
+// floor(2.6)   //2  向下取整
+// 命名空间
+.blue {
+    .button {
+        background: blue;
+    }
+}
+.red {
+    .button {
+        background: red;
+    }
+}
+.box {
+    .red > .button
+}
+// import-----@import 'lib.less'（去关联另一个less文件）
+// 避免编译：~
+@rem: 32rem;
+.box {
+    font: (12/@rem)~'/'(20/@rem) '宋体';
 }
