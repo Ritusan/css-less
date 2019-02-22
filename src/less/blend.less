@@ -1,0 +1,85 @@
+// 混合
+// 将一个定义好的 class A 引入到另一个 class B 中，从而简单实现 class B 继承 class A 中的所有属性
+// 带参数混合（参数设置默认值）：
+// @arguments 变量;
+// 模式匹配
+// 雪碧图
+
+// 1.最简单的混合（继承一个class的所有样式）
+// .classa {
+//     border: 1px solid #b7b7b7;
+// }
+// .clearFix {
+//     *zoom: 1;
+//     &:after {
+//         content: '';
+//         display: block;
+//         clear: both;
+//     }
+// }
+// .classb {
+//     .classa;
+//     .clearFix;
+// }
+
+// 2.带参数混合
+// .border(@color) {
+//     border: 1px solid @color;
+// }
+// .box1 {
+//     .border(#b7b7b7)
+// }
+// .box2 {
+//     .border(#ff0000)
+// }
+// .box3 {
+//     .border(#ff0000)
+// }
+// .box4 {
+//     .border(#ff0000)
+// }
+// .box5 {
+//     .border(#ff0000)
+// }
+
+// 3.多个参数的混合
+// 带默认值的参数混合
+// .border(@width:1px,@style:solid,@color:#b7b7b7) {
+//     border: @width @style @color;
+// }
+// .box1 {
+//     .border()
+// }
+// .box2 {
+//     // 要改变参数默认值时里面有几个参数就要都传进去，是按参数顺序依次解析的，最后一个参数和默认值相同的话可以不传
+//     .border(1px,solid,#ff0000)
+// }
+// .box3 {
+//     .border(2px,solid,#ff0000)
+// }
+// .box4 {
+//     .border(1px,dotted,#ff0000)
+// }
+// .box5 {
+//     .border()
+// }
+
+// arguments变量：代表所有的参数（不在乎参数顺序的时候可以使用）
+.border(@width:1px,@style:solid,@color:#b7b7b7) {
+    border: @arguments;
+}
+.box1 {
+    .border()
+}
+.box2 {
+    .border(1px,solid,#ff0000)
+}
+.box3 {
+    .border(2px,solid,#ff0000)
+}
+.box4 {
+    .border(1px,dotted,#ff0000)
+}
+.box5 {
+    .border()
+}
