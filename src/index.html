@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet/less" type="text/css" href="css/main.less" /> -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.8.1/less.min.js"></script> -->
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // less使用方法：
+        // 1.直接引入less.js：
+        // 好处：能获取到客户端的数据，从而进行进一步计算
+        // 坏处：在客户端解析less，造成性能浪费，不易于维护
+
+        // 2.koala编译器
+        // 缺点：每次都要打开软件
+
+        // 3.在服务器环境编译 node npm
+        // 打开命令行：运行 lessc main.less > main.css
+
+        // 4.在编辑器中实时编译
+        // 配置稍微麻烦
+        // 在vscode中安装easy less插件
+        // 然后在项目的顶层新建.vscode目录，目录下面新建settings.json文件，文件里面添加几句配置即可
+        //     "less.compile": {
+        //     "compress": true,
+        //     "out": "${workspaceRoot}/src/css/",  此处的/不可写成\\，否则css文件自动编译失败
+        // }
+    </script>
+</body>
+
+</html>
