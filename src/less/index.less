@@ -1,11 +1,55 @@
-ul {
-    li {
+// 嵌套：
+// 我们可以在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰
+// &
+// //的注释不会带到编译好的css中，/**/这样的注释会带到编译完成的css中
+body {
+    margin: 0;
+}
+nav {
+    height: 50px;
+    background: gold;
+    .content {
+        width: 1200px;
+        margin: 0 auto;
+        line-height: 50px;
         a {
-            margin: 0;
+            color: #000;
             &:hover {
-                background: orange
+                color: cornflowerblue;
             }
         }
-        padding: 0;
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
     }
+}
+
+// 变量：@+变量名
+// 变量允许我们单独定义一系列通用的样式，然后在需要的时候去调用，所以在做全局样式调整时我们可能只需要修改几行代码就可以了
+// @rem
+// 作用  域（空间，区域）：变量发生作用的一个区域 {}
+.box {
+    // @width在.box作用域中起作用
+    @width: 10px;
+}
+
+@width: 2px;
+@style: solid;
+@red: red;
+@blue: blue;
+.box1 {
+    width: 300px;
+    height: 100px;
+    border: @width @style @red;
+}
+.box2 {
+    width: 300px;
+    height: 100px;
+    border: @width @style @blue;
+}
+.box3 {
+    background-color: @blue;
 }
